@@ -1,0 +1,2 @@
+INSERT INTO users (email, password, role, phone_number, first_name, last_name, patronymic, profile_image_path, activated, deleted, created_at)
+VALUES ('manager', '$2a$10$bQ2EeGfBv5UHjBvp5tow8.g8VL1RFgjSmY6qchzh./zx6NyMsKLeS', 'ROLE_MANAGER', '+996509091625', 'Анжелика', 'Сурабалдиева', 'Мыкановна', 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png', TRUE, FALSE, NOW());

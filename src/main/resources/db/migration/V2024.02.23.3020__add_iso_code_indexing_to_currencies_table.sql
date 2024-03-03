@@ -1,0 +1,1 @@
+CREATE INDEX iso_code_idx ON currencies (iso_code);

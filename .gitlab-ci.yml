@@ -1,0 +1,37 @@
+stages: 
+  - build 
+  - deploy 
+ 
+variables: 
+  GIT_STRATEGY: clone 
+build: 
+  stage: build 
+  tags:  
+    - spring 
+  script: 
+    - whoami
+    - echo "Testing and building are starting" 
+    - chmod +x ./mvnw 
+    - date "+%H:%M:%S"
+    - echo "1"
+    - ./mvnw clean package 
+  artifacts: 
+    paths: 
+      - target/*.jar   
+ 
+ 
+deploy: 
+  stage: deploy 
+  tags:  
+    - spring  
+  script: 
+    - echo "Deployment process is starting"
+    - cd target
+    - rm -f /home/Intern_Labs_5_0/Bekzhan_Satiev/dev-kg/server-0.0.1-SNAPSHOT.jar
+    - sleep 5
+    - /bin/cp server-0.0.1-SNAPSHOT.jar /home/Intern_Labs_5_0/Bekzhan_Satiev/dev-kg
+    - sudo systemctl stop su-spring-service
+    - sleep 5
+    - sudo systemctl start su-spring-service
+  only: 
+    - dev-kg
